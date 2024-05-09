@@ -1,7 +1,7 @@
 require('dotenv').config()
 const userModel = require('./models/userModel')
 var mongoose =require('mongoose')
-mongoose.connect('mongodb://localhost:27017/dynamicChatApps')
+mongoose.connect(process.env.Mongoose_Connection)
 const chatModel=require('./models/chatModel')
 const app = require('express')()
 const groupMemberModel = require('./models/groupMemberModel')
