@@ -1,0 +1,168 @@
+
+<%- include('layouts/header.ejs') %>
+
+<h2 class="mb-4">groups</h2>
+
+ <button id="btnn" class=" btnshow btn btn-primary">ADD GROUP</button>
+
+       
+
+
+ 
+<table style="width: 100%; " class="mt-5">
+  <thead style="border: 1px solid #ddd;" >
+    <tr>
+      <th >S No</th>
+      <th>Images</th>
+      <th>name</th>
+      <th>Limit</th>
+      <th>members</th>
+      <th>Action</th>
+      <th>dleat</th>
+      <th>edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if(groups.length > 0) { %>
+      <% for (let i = 0; i < groups.length; i++) { %>
+        
+        <tr class="grpid" group_id="<%=groups[i]['_id']%>" style="margin-top: 10px; border-bottom: 1px solid #ddd;">
+          <td><%= i+1 %></td>
+          <td><img width="70px" src="http://localhost:3000/<%= groups[i]['image'] %>" alt=""></td>
+          <td><%= groups[i]['name'] %></td>
+          <td><%= groups[i]['limit'] %></td>
+          <td class="btnshowname"> members</td>
+          <td class="datashowall">show users</td>
+          <td  ><i username="<%= groups[i]['name'] %>" userid="<%= groups[i]['_id']%>" class="groupdleat cursor-pointer fa fa-trash-o" aria-hidden="true"></i></td>
+        <td   ><i limit="<%= groups[i]['limit'] %>" image="<%= groups[i]['image'] %>"
+            username="<%= groups[i]['name'] %>" userid="<%= groups[i]['_id']%>"
+             class="groupedit cursor-pointer  fa fa-pencil-square-o" aria-hidden="true"></i></td>
+        </tr>
+      <% } %>
+    <% } else { %>
+      <tr>
+        <td colspan="6">No groups available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<!--todo: show members list -->
+<!-- <div style="width: 200px;"> 
+  <h3>members</h3>
+  <table style="width: 100%;">
+    <thead>
+      <tr style=" width: 100%;border: 1px solid #ddd;">
+        <td>select</td>
+        <td>name</td>
+      </tr>
+    </thead>
+  </table>
+  <table style="width: 100%; background: #000;">
+      <tbody style="padding-left: 10px;">
+        <tr style="padding-left: 10px;">
+          <td><input type="checkbox"></td>
+          <td>aman</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>aman</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>aman</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>aman</td>
+        </tr>
+
+      </tbody>
+   
+  </table>
+</div> -->
+         <div class=" showusers d-none" style=" width: 100%; height: 100vh; position: fixed; background: rgba(44,44,44,0.3); top: 0%; left: 0%;">
+          <div style=" padding: 10px; border-radius: 15px; background: white; margin:30vh auto ; width: 250px; height: auto; border: 1px solid #ddd;">
+            <h4 style="text-align: center;">add group members</h4>
+            <div class="table-container">
+              <table class="table">
+                <thead class="thead">
+                  <tr >
+                    <th class="th"> select</th>
+                    
+                    <th class="th">names</th>
+                   
+                  </tr>
+                </thead>
+                <tbody class="addname tbody">
+      
+                  
+                
+                  
+                  
+                 
+                  
+                
+            
+                </tbody>
+              </table>
+            </div>
+            <br>
+             <button class="cancil ml-4 btn btn-dark">close</button>
+             <button class="svebtn btn btn-primary">update messige</button>
+             
+           </div>
+         </div>
+         
+
+<!--! -------------------------------create group start --------------------- -->
+<div class="my d-none" style="width: 100%;height: 100vh;position: fixed; background: rgba(44,44,44,0.3); top: 0%;left: 0%;">
+    <div  style="border-radius: 15px; margin:140px auto; background: white; border: 1px solid #ddd; width: max-content; padding: 15px; display: flex; flex-direction: column;"> 
+        <h3 style="text-align: center; text-decoration-line: underline;">ADD GROUP</h3>
+        <i style="font-size:30px ; margin-left: 19%; color: red;" class=" cancil cursor-pointer position-absolute  fa fa-times-circle" aria-hidden="true"></i>
+        <form style="text-align:center;" action="" method="POST" enctype="multipart/form-data">
+        <input type="text" name="groupname" id="groupname" placeholder="enter group name"><br>
+  <br><abbr title="for adding group pic" style=" font-weight: 900; text-decoration-line: none; margin-top: 10px; margin-bottom: 0px;"> choose group pic</abbr>
+ <br> <input id="image" name="image"  type="file"><br>
+   <br><input   type="number" id="limit" name="limit" placeholder="Number of limit"><br>
+  <br>
+  <input type="submit" value="groups">
+
+</form>
+</div>
+</div>
+
+ <h1 ></h1>
+         
+    <!--todo:=> start show names -->
+
+     <div class=" mbox d-none  position-absolute" style=" border-radius: 15px; background: white;left: 50%; top:32vh; width: 200px;height:300px; border:1px solid #ddd;">
+              <h4> group_members</h1>
+                <hr>
+              <div class=" overflows namelist" style=" width: 200px;height:170px;"></div>
+              <button style="margin: 20px 20% ; width: 50%;" class="okaybtn btn btn-secondary">ok</button>
+              
+     </div>
+
+
+  <!--todo edit group template -->
+  <!-- <div class="editmy d-none" style="width: 100%;height: 100vh;position: fixed; background: rgba(44,44,44,0.3); top: 0%;left: 0%;">
+    <div  style="border-radius: 15px; margin:90px auto; background: white; border: 1px solid #ddd; width: max-content; padding: 15px; display: flex; flex-direction: column;"> 
+        <h3 style="text-align: center; text-decoration-line: underline;">EDIT GROUP</h3>
+        <i style="font-size:30px ; margin-left: 19%; color: rgb(255, 47, 0);" class="  canciledit cursor-pointer position-absolute  fa fa-times-circle" aria-hidden="true"></i>
+        <img style="margin: 0 auto; border-radius: 50%;" width="100px" height="100px" class="imageedit" src="" alt="error">
+           
+        <form style="text-align:center;" action="" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="id" id="ids">
+          <input type="text" name="groupname"   id="groupnameedit" placeholder="enter group name"><br>
+  <br><abbr title="for adding group pic" style=" font-weight: 900; text-decoration-line: none; margin-top: 10px; margin-bottom: 0px;"> choose group pic</abbr>
+ <br> <input id="imageedit" name="image"  type="file"><br>
+   <br><input    type="number" id="limitedit" name="limit" placeholder="Number of limit"><br>
+  <br>
+  <input type="submit" id="editsave" value="groupchat">
+</form>
+</div>
+</div> -->
+
+     <script src="js/main.js"></script>
+<%- include('layouts/footer.ejs') %>

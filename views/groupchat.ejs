@@ -1,0 +1,58 @@
+
+<%- include('layouts/header.ejs') %>
+
+<h2 class="mb-4">group chat</h2>
+
+<div class="row">
+<div class="col-md-3">
+  <ul class="list-group">
+    <% if (myGroups.length > 0) { %>
+      <p>created_group</p>
+      <% for (let i = 0; i < myGroups.length; i++) { %>
+        <li class="list-group-item list-group-item-dark cursor-pointer group-list" data-id="<%= myGroups[i]._id %>">
+          <img src="/<%= myGroups[i].image %>" width="50px" height="30px" alt="">
+          <%= myGroups[i].name %>
+        </li>
+      <% } %>
+    <% } %>
+  
+    <!-- Show joined groups -->
+    <% if (joinedGroups && joinedGroups.length > 0) { %>
+      <p>joined group</p>
+      <% for (let i = 0; i < joinedGroups.length; i++) { %>
+        <% if (joinedGroups[i] && joinedGroups[i].group_id) { %>
+          <li class="list-group-item list-group-item-dark cursor-pointer group-list" data-id="<%= joinedGroups[i].group_id._id %>">
+            <img src="/<%= joinedGroups[i].group_id.image %>" width="50px" height="30px" alt="">
+            <%= joinedGroups[i].group_id.name %>
+          </li>
+        <% } %>
+      <% } %>
+    <% } %>
+  </ul>
+      
+        
+</div>
+<div class="col-md-9">
+  <h3 class="group-start-head"> click to start the  chat</h3>
+  <div class="group-chat-section">
+    <div class="group-chat-container">
+        <div class="group-current-user-chat">
+            <h5>hii</h5>
+            </div>
+            <div class="group-distance-user-chat">
+            <h5>hii</h5>
+            </div>
+       
+             
+        </div>
+    
+        <input class="border grpmsgvalue" type="text" name="massige" placeholder="enter massige " id="massige" required>
+         <input type="submit" value="Send Messige "  class="groupmsg btn btn-primary"   >
+         
+         </div>
+</div>
+</div>
+
+<script src="js/maintwo.js"></script>
+<!-- <script src="js/main.js"></script> -->
+<%- include('layouts/footer.ejs') %>

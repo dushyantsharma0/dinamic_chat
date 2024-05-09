@@ -1,0 +1,27 @@
+<h1>register</h1>
+
+
+<form action="" method="POST" enctype="multipart/form-data" >
+ 
+        <input type="text" name="name" placeholder=" enter name " required>
+        <br><br>
+        <input type="email" name="email" placeholder=" enter email " required>
+        <input type="file" name="image"  required>
+        <br><br>
+        <input type="password" name="password" placeholder=" enter password " required>
+        <br><br>
+        <input type="submit" value="register">
+
+
+</form>
+          
+<% 
+ if(typeof massige !== "undefined"){
+               %>
+               <p style="color:green;" >
+                   <%= massige%>
+                   </p>
+               <%
+ }
+%>
+          

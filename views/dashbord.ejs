@@ -1,0 +1,46 @@
+
+<%- include('layouts/header.ejs') %>
+
+<h2 class="mb-4">Hii,<%= user.name%></h2>
+
+<div class="row">
+<div class="col-md-3">
+    <ul class="list-group">
+        <% if (users.length > 0) {
+          for (let i = 0; i < users.length; i++) { %>
+            <li class="list-group-item list-group-item-dark cursor-pointer user-list" data-id="<%= users[i]._id %>">
+              <img src="http://localhost:3000/<%= users[i].image %>" width="50px" height="30px" alt="">
+              <%= users[i].name %>
+              <% if (users[i].is_online === "1") { %>
+                <sup class="online-status" id="<%= users[i]._id %>-status"> online</sup>
+              <% } else { %>
+                <sup class="offline-status" id="<%= users[i]._id %>-status"> offline</sup>
+              <% } %>
+            </li>
+          <% }
+        } %>
+      </ul>
+        
+</div>
+<div class="col-md-9">
+  <h3 class="start-head"> click to start the  chat</h3>
+  <div class="chat-section ">
+    <div class="chat-container">
+        <div class="current-user-chat">
+            <h5>hii</h5>
+            </div>
+            <div class="distance-user-chat">
+            <h5>hii</h5>
+            </div>
+       
+             
+        </div>
+    <form action="" id="chat-form">
+        <input class="border" type="text" name="massige" placeholder="enter massige " id="massige" required>
+         <input type="submit" value="Send Messige "  class="btn btn-primary"   >
+        </form>
+         </div>
+</div>
+</div>
+<script src="js/main.js"></script>
+<%- include('layouts/footer.ejs') %>
